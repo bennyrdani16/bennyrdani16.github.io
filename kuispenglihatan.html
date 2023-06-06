@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Halaman Kuis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .quiz-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .quiz-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .quiz-card h2 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .quiz-card p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .quiz-button {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .quiz-button:hover {
+      background-color: #45a049;
+    }
+    .answer-button {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: #f1f1f1;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .answer-button:hover {
+      background-color: #ddd;
+    }
+    .result-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .result-text {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .restart-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .restart-button:hover {
+      background-color: #45a049;
+    }
+    @media screen and (max-width: 600px) {
+      .quiz-card {
+        padding: 10px;
+      }
+      .quiz-card h2 {
+        font-size: 20px;
+      }
+      .quiz-button {
+        font-size: 16px;
+      }
+      .answer-button {
+        font-size: 14px;
+      }
+      .result-text {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Halaman Kuis Indra Penglihatan</h1>
+    <!-- Soal nomor 1 -->
+    <div class="quiz-card" id="quiz-card-1">
+      <img src="assets/img/melihat.png" width="100" height="100" alt="Pertanyaan 1">
+      <h2>Indra penglihatan manusia disebut sebagai...</h2>
+      <p>Pilih jawaban yang benar:</p>
+      <ul>
+        <li><button class="answer-button" onclick="checkAnswer(1, 'jawaban-1')">Mata</button></li>
+        <li><button class="answer-button" onclick="checkAnswer(1, 'jawaban-2')">Hidung</button></li>
+        <li><button class="answer-button" onclick="checkAnswer(1, 'jawaban-3')">Telinga</button></li>
+      </ul>
+    </div>
+<!-- Soal nomor 2 -->
+    <div class="quiz-card" id="quiz-card-2">
+      <img src="gambar-pertanyaan-2.jpg" alt="Pertanyaan 2">
+      <h2>Bagian mata yang bertanggung jawab untuk menangkap cahaya adalah...</h2>
+      <p>Pilih jawaban yang benar:</p>
+      <ul>
+        <li><button class="answer-button" onclick="checkAnswer(2, 'jawaban-1')">Retina</button></li>
+        <li><button class="answer-button" onclick="checkAnswer(2, 'jawaban-2')">Kornea</button></li>
+        <li><button class="answer-button" onclick="checkAnswer(2, 'jawaban-3')">Lensa</button></li>
+      </ul>
+    </div>
+<!-- Soal nomor 3 -->
+    <div class="quiz-card" id="quiz-card-3">
+        <img src="gambar-pertanyaan-3.jpg" alt="Pertanyaan 3">
+        <h2>Cahaya yang masuk kemata pertama kali melewati...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(3, 'jawaban-1')">Pupil</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(3, 'jawaban-2')">Iris</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(3, 'jawaban-3')">Kornea</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 4 -->
+    <div class="quiz-card" id="quiz-card-4">
+        <img src="gambar-pertanyaan-4.jpg" alt="Pertanyaan 4">
+        <h2>Sel-sel khusus diretina yang bertanggung jawab untuk penglihatan warna disebut...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(4, 'jawaban-1')">Batang</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(4, 'jawaban-2')">Konus</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(4, 'jawaban-3')">Konektor</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 5 -->
+    <div class="quiz-card" id="quiz-card-5">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 5">
+        <h2>Bagian otak yang terlibat dalam pengolahan informasi visual adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(5, 'jawaban-1')">Otak belakang</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(5, 'jawaban-2')">Otak tengah</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(5, 'jawaban-3')">Otak depan</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 6 -->
+    <div class="quiz-card" id="quiz-card-6">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 6">
+        <h2>Jarak yang dapat dilihat secara jelas oleh mata manusia disebut...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(6, 'jawaban-1')">Pandangan binokuler</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(6, 'jawaban-2')">Pandangan periferal</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(6, 'jawaban-3')">Pandangan foveal</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 7 -->
+    <div class="quiz-card" id="quiz-card-7">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 7">
+        <h2>kelainan penglihatan yang disebakan oleh kelainan bentuk kornea adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(7, 'jawaban-1')">Astigmatisma</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(7, 'jawaban-2')">Miopi</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(7, 'jawaban-3')">hipermetropi</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 8 -->
+    <div class="quiz-card" id="quiz-card-8">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 8">
+        <h2>Warna yang terletak diantara hijau dan biru dalam spektrum warna adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(8, 'jawaban-1')">Jingga</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(8, 'jawaban-2')">Kuning</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(8, 'jawaban-3')">Biru kehijauan</button></li>
+        </ul>
+      </div>
+        <!-- Soal nomor 9 -->
+    <div class="quiz-card" id="quiz-card-9">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 9">
+        <h2>Alat optik yang digunakan untuk melihat objek yang jauh adalah....</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(9, 'jawaban-1')">Teleskop</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(9, 'jawaban-2')">Mikroskop</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(9, 'jawaban-3')">Teropong</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 10 -->
+    <div class="quiz-card" id="quiz-card-10">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 10 ">
+        <h2> Proses di mana lensa mata menyesuaikan ketebalannya untuk fokus pada objek yang berbeda disebut...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(10, 'jawaban-1')"> Refraksi</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(10, 'jawaban-2')">Akomodasi</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(10, 'jawaban-3')"> Presbiopia</button></li>
+        </ul>
+      </div>
+         <!-- Soal nomor 11 -->
+    <div class="quiz-card" id="quiz-card-11">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 11 ">
+        <h2> Pigmen yang memberikan warna pada iris mata disebut...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(11, 'jawaban-1')"> Rodopsin</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(11, 'jawaban-2')">Melanin</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(11, 'jawaban-3')">Hemoglobin</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 12 -->
+    <div class="quiz-card" id="quiz-card-12">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 12 ">
+        <h2>Bagian mata yang mengubah cahaya menjadi sinyal listrik adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(12, 'jawaban-1')">Retina</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(12, 'jawaban-2')">Pupil</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(12, 'jawaban-3')">Kornea</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 13 -->
+    <div class="quiz-card" id="quiz-card-13">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 13 ">
+        <h2>Sel-sel batang di retina bertanggung jawab atas...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(13, 'jawaban-1')">Penglihatan jarak dekat</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(13, 'jawaban-2')">Penglihatan periferal</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(13, 'jawaban-3')">Penglihatan malam hari</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 14 -->
+    <div class="quiz-card" id="quiz-card-14">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 14 ">
+        <h2>Kelainan penglihatan yang ditandai dengan ketidakmampuan melihat objek jauh dengan jelas disebut....</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(14, 'jawaban-1')">Astigmatisma</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(14, 'jawaban-2')">Miopi</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(14, 'jawaban-3')">Hipermetropi</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 15 -->
+    <div class="quiz-card" id="quiz-card-15">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 15">
+        <h2>Cahaya yang dihasilkan oleh objek terlihat oleh mata manusia karena...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(15, 'jawaban-1')">Objek memantulkan cahaya</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(15, 'jawaban-2')">Objek menyerap cahaya</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(15, 'jawaban-3')">Objek memancarkan cahaya sendiri</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 16 -->
+    <div class="quiz-card" id="quiz-card-16">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 16">
+        <h2>Warna yang dihasilkan oleh campuran cahaya merah dan hijau adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(16, 'jawaban-1')">Biru</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(16, 'jawaban-2')">Magenta</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(16, 'jawaban-3')">Kuning</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 17 -->
+    <div class="quiz-card" id="quiz-card-17">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 17">
+        <h2>Bagian mata yang mengatur jumlah cahaya yang masuk adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(17, 'jawaban-1')">Retina</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(17, 'jawaban-2')">Iris</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(17, 'jawaban-3')">Lensa</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 18 -->
+    <div class="quiz-card" id="quiz-card-18">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 18">
+        <h2>Bagian otak yang bertanggung jawab untuk pengenalan wajah dan pengolahan informasi visual kompleks adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(18, 'jawaban-1')">Otak belakang</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(18, 'jawaban-2')">Otak tengah</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(18, 'jawaban-3')">Otak samping</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 19 -->
+    <div class="quiz-card" id="quiz-card-19">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 19">
+        <h2>Warna yang dihasilkan oleh campuran cahaya merah, hijau, dan biru adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(19, 'jawaban-1')">Merah</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(19, 'jawaban-2')">Ungu</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(19, 'jawaban-3')">Putih</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 20 -->
+    <div class="quiz-card" id="quiz-card-20">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 20">
+        <h2>Istilah yang mengacu pada ketajaman penglihatan adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(20, 'jawaban-1')">Astigmatisma</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(20, 'jawaban-2')">Visual acuity</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(20, 'jawaban-3')">Presbiopia</button></li>
+        </ul>
+      </div>
+    <!-- Tambahkan card-card lainnya sesuai dengan jumlah pertanyaan -->
+
+    <div class="result-container" id="result-container" style="display: none;">
+      <p class="result-text" id="result-text"></p>
+      <button class="restart-button" onclick="restartQuiz()">Ulangi Kuis</button>
+    </div>
+  </div>
+
+  <script>
+    var totalQuestions = 20; // Jumlah total pertanyaan
+    var correctAnswers = 0; // Jumlah jawaban yang benar
+    var currentQuestion = 1; // Pertanyaan saat ini
+
+    function checkAnswer(questionNumber, selectedAnswer) {
+      // Periksa jawaban yang benar sesuai dengan pertanyaan dan jawaban yang dipilih
+      if (questionNumber === 1 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      } else if (questionNumber === 2 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 3 && selectedAnswer === 'jawaban-3') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 4 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 5 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 6 && selectedAnswer === 'jawaban-3') {
+        correctAnswers++;
+      }
+    
+      else if (questionNumber === 7 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 8 && selectedAnswer === 'jawaban-3') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 9 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 10 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+    
+      else if (questionNumber === 11 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 12 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 13 && selectedAnswer === 'jawaban-3') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 14 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 15 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+    
+      else if (questionNumber === 16 && selectedAnswer === 'jawaban-3') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 17 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 18 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 19 && selectedAnswer === 'jawaban-3') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 20 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      // Sembunyikan pertanyaan saat ini dan tampilkan pertanyaan berikutnya (jika ada)
+      document.getElementById("quiz-card-" + questionNumber).style.display = "none";
+      questionNumber++;
+      if (questionNumber <= totalQuestions) {
+        document.getElementById("quiz-card-" + questionNumber).style.display = "block";
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      // Hitung dan tampilkan hasil kuis
+      var score = Math.round((correctAnswers / totalQuestions) * 100);
+      var resultText = "Skor Anda: " + score + "%";
+      document.getElementById("result-text").innerHTML = resultText;
+      document.getElementById("result-container").style.display = "block";
+    }
+
+    function restartQuiz() {
+      // Atur ulang semua variabel dan tampilkan pertanyaan pertama
+      correctAnswers = 0;
+      currentQuestion = 1;
+      document.getElementById("quiz-card-1").style.display = "block";
+      document.getElementById("result-container").style.display = "none";
+    }
+  </script>
+</body>
+</html>

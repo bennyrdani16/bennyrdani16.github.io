@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Halaman Kuis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .quiz-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .quiz-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .quiz-card h2 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .quiz-card p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .quiz-button {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .quiz-button:hover {
+      background-color: #45a049;
+    }
+    .answer-button {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: #f1f1f1;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .answer-button:hover {
+      background-color: #ddd;
+    }
+    .result-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .result-text {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .restart-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .restart-button:hover {
+      background-color: #45a049;
+    }
+    @media screen and (max-width: 600px) {
+      .quiz-card {
+        padding: 10px;
+      }
+      .quiz-card h2 {
+        font-size: 20px;
+      }
+      .quiz-button {
+        font-size: 16px;
+      }
+      .answer-button {
+        font-size: 14px;
+      }
+      .result-text {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Halaman Kuis Indra Pendengaran</h1>
+    <!-- Soal nomor 1 -->
+    <div class="quiz-card" id="quiz-card-1">
+      <img src="assets/img/melihat.png" width="100" height="100" alt="Pertanyaan 1">
+      <h2>Organ yang berfungsi untuk menerima dan merespon bunyi-bunyian di sekitar kita adalah...</h2>
+      <p>Pilih jawaban yang benar:</p>
+      <ul>
+        <li><button class="answer-button" onclick="checkAnswer(1, 'jawaban-1')">Aurikel</button></li>
+        <li><button class="answer-button" onclick="checkAnswer(1, 'jawaban-2')">Liang telinga</button></li>
+        <li><button class="answer-button" onclick="checkAnswer(1, 'jawaban-3')">Gendang telinga</button></li>
+      </ul>
+    </div>
+<!-- Soal nomor 2 -->
+    <div class="quiz-card" id="quiz-card-2">
+      <img src="gambar-pertanyaan-2.jpg" alt="Pertanyaan 2">
+      <h2>Bagian telinga yang berfungsi untuk menyampaikan getaran bunyi ke membrana timpani adalah...</h2>
+      <p>Pilih jawaban yang benar:</p>
+      <ul>
+        <li><button class="answer-button" onclick="checkAnswer(2, 'jawaban-1')">Koklea</button></li>
+        <li><button class="answer-button" onclick="checkAnswer(2, 'jawaban-2')">Liang telinga</button></li>
+        <li><button class="answer-button" onclick="checkAnswer(2, 'jawaban-3')">Telinga tengah</button></li>
+      </ul>
+    </div>
+<!-- Soal nomor 3 -->
+    <div class="quiz-card" id="quiz-card-3">
+        <img src="gambar-pertanyaan-3.jpg" alt="Pertanyaan 3">
+        <h2>Bagian telinga yang terdiri dari tulang pendengaran (martil, landasan, dan sanggurdi) adalah...</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(3, 'jawaban-1')">Telinga tengah</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(3, 'jawaban-2')">Koklea</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(3, 'jawaban-3')">Aurikel</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 4 -->
+    <div class="quiz-card" id="quiz-card-4">
+        <img src="gambar-pertanyaan-4.jpg" alt="Pertanyaan 4">
+        <h2>Organ yang mengubah getaran suara menjadi sinyal listrik adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(4, 'jawaban-1')">Liang telinga</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(4, 'jawaban-2')">Koklea</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(4, 'jawaban-3')">Gendang telinga</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 5 -->
+    <div class="quiz-card" id="quiz-card-5">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 5">
+        <h2>Sel rambut yang sensitif terhadap getaran suara terdapat di bagian...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(5, 'jawaban-1')">Gendang telinga</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(5, 'jawaban-2')">Liang telinga</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(5, 'jawaban-3')">Koklea</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 6 -->
+    <div class="quiz-card" id="quiz-card-6">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 6">
+        <h2>Fungsi utama telinga adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(6, 'jawaban-1')">Mengenali bau</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(6, 'jawaban-2')">Menerima dan memproses suara</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(6, 'jawaban-3')">Melihat warna</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 7 -->
+    <div class="quiz-card" id="quiz-card-7">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 7">
+        <h2>Rentang frekuensi bunyi yang dapat didengar oleh manusia adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(7, 'jawaban-1')">1000 Hz - 10,000 Hz</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(7, 'jawaban-2')">20 Hz - 20,000 Hz</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(7, 'jawaban-3')">1 Hz - 100 Hz</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 8 -->
+    <div class="quiz-card" id="quiz-card-8">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 8">
+        <h2>Jika manusia mendengarkan bunyi dengan frekuensi lebih dari 20,000 Hz, apa yang dapat terjadi?</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(8, 'jawaban-1')">Gendang telinga pecah</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(8, 'jawaban-2')">Telinga menjadi tuli</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(8, 'jawaban-3')">Terjadi gangguan keseimbangan</button></li>
+        </ul>
+      </div>
+        <!-- Soal nomor 9 -->
+    <div class="quiz-card" id="quiz-card-9">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 9">
+        <h2>Bagian telinga yang berfungsi untuk menjaga keseimbangan adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(9, 'jawaban-1')">Koklea</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(9, 'jawaban-2')"> Bagian dalam telinga</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(9, 'jawaban-3')">Aurikel</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 10 -->
+    <div class="quiz-card" id="quiz-card-10">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 10 ">
+        <h2> Bagian utama dalam labirin membran yang terkait dengan fungsi keseimbangan adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(10, 'jawaban-1')"> Saluran setengah lingkaran</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(10, 'jawaban-2')">Utrikulus</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(10, 'jawaban-3')"> Sakulus</button></li>
+        </ul>
+      </div>
+         <!-- Soal nomor 11 -->
+    <div class="quiz-card" id="quiz-card-11">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 11 ">
+        <h2> Fungsi dari saluran setengah lingkaran adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(11, 'jawaban-1')"> Mendengarkan bunyi</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(11, 'jawaban-2')">Menjaga keseimbangan</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(11, 'jawaban-3')">Mengubah getaran suara menjadi sinyal listrik</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 12 -->
+    <div class="quiz-card" id="quiz-card-12">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 12 ">
+        <h2>Tiga tulang pendengaran dalam telinga tengah adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(12, 'jawaban-1')">Aurikel, liang telinga, koklea</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(12, 'jawaban-2')">Martil, landasan, sanggurdi</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(12, 'jawaban-3')">Martil, aurikel, sakulus</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 13 -->
+    <div class="quiz-card" id="quiz-card-13">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 13 ">
+        <h2>Bagian telinga yang berfungsi untuk menerima dan merespon bunyi-bunyian di lingkungan adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(13, 'jawaban-1')">Aurikel</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(13, 'jawaban-2')">Liang telinga</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(13, 'jawaban-3')">Telinga tengah</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 14 -->
+    <div class="quiz-card" id="quiz-card-14">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 14 ">
+        <h2>Apa yang terjadi ketika gelombang suara mencapai koklea?</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(14, 'jawaban-1')">Gelombang suara disaring</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(14, 'jawaban-2')">Gelombang suara dikirim ke otak</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(14, 'jawaban-3')">Gelombang suara mengubah getaran menjadi sinyal listrik</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 15 -->
+    <div class="quiz-card" id="quiz-card-15">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 15">
+        <h2>Fungsi dari gendang telinga adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(15, 'jawaban-1')">Menjaga keseimbangan</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(15, 'jawaban-2')">Mentransmisikan getaran suara ke telinga tengah</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(15, 'jawaban-3')">Melindungi telinga dari benda asing</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 16 -->
+    <div class="quiz-card" id="quiz-card-16">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 16">
+        <h2>Bagian telinga yang berfungsi untuk mengarahkan gelombang suara ke saluran telinga adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(16, 'jawaban-1')">Aurikel</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(16, 'jawaban-2')">Gendang telinga</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(16, 'jawaban-3')">Liang telinga</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 17 -->
+    <div class="quiz-card" id="quiz-card-17">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 17">
+        <h2>Apa yang terjadi saat gelombang suara mencapai gendang telinga?</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(17, 'jawaban-1')">Gendang telinga bergetar</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(17, 'jawaban-2')">Gendang telinga mengubah getaran menjadi sinyal listrik</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(17, 'jawaban-3')">Gendang telinga mengarahkan gelombang suara ke saluran telinga</button></li>
+        </ul>
+      </div>
+      <!-- Soal nomor 18 -->
+    <div class="quiz-card" id="quiz-card-18">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 18">
+        <h2>Bagian telinga yang berfungsi untuk mengenali berbagai aspek suara seperti volume, nada, ritme, dan kualitas suara adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(18, 'jawaban-1')">Aurikel</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(18, 'jawaban-2')">Otak</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(18, 'jawaban-3')">Koklea</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 19 -->
+    <div class="quiz-card" id="quiz-card-19">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 19">
+        <h2>Bagian telinga yang terdiri dari labirin tulang dan labirin membran adalah...</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(19, 'jawaban-1')">Aurikel</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(19, 'jawaban-2')">Bagian dalam telinga</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(19, 'jawaban-3')">Koklea</button></li>
+        </ul>
+      </div>
+       <!-- Soal nomor 20 -->
+    <div class="quiz-card" id="quiz-card-20">
+        <img src="gambar-pertanyaan-5.jpg" alt="Pertanyaan 20">
+        <h2> Apa yang memungkinkan kita untuk mengidentifikasi sumber suara, memahami bahasa, menikmati musik, dan berkomunikasi dengan orang lain melalui suara?</h2>
+        <p>Pilih jawaban yang benar:</p>
+        <ul>
+          <li><button class="answer-button" onclick="checkAnswer(20, 'jawaban-1')">Gendang telinga</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(20, 'jawaban-2')">Koklea</button></li>
+          <li><button class="answer-button" onclick="checkAnswer(20, 'jawaban-3')">Otak</button></li>
+        </ul>
+      </div>
+    <!-- Tambahkan card-card lainnya sesuai dengan jumlah pertanyaan -->
+
+    <div class="result-container" id="result-container" style="display: none;">
+      <p class="result-text" id="result-text"></p>
+      <button class="restart-button" onclick="restartQuiz()">Ulangi Kuis</button>
+    </div>
+  </div>
+
+  <script>
+    var totalQuestions = 20; // Jumlah total pertanyaan
+    var correctAnswers = 0; // Jumlah jawaban yang benar
+    var currentQuestion = 1; // Pertanyaan saat ini
+
+    function checkAnswer(questionNumber, selectedAnswer) {
+      // Periksa jawaban yang benar sesuai dengan pertanyaan dan jawaban yang dipilih
+      if (questionNumber === 1 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      } else if (questionNumber === 2 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 3 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 4 && selectedAnswer === 'jawaban-3') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 5 && selectedAnswer === 'jawaban-3') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 6 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+    
+      else if (questionNumber === 7 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 8 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 9 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 10 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+    
+      else if (questionNumber === 11 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 12 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 13 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 14 && selectedAnswer === 'jawaban-3') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 15 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+    
+      else if (questionNumber === 16 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 17 && selectedAnswer === 'jawaban-1') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 18 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 19 && selectedAnswer === 'jawaban-2') {
+        correctAnswers++;
+      }
+      else if (questionNumber === 20 && selectedAnswer === 'jawaban-3') {
+        correctAnswers++;
+      }
+      // Sembunyikan pertanyaan saat ini dan tampilkan pertanyaan berikutnya (jika ada)
+      document.getElementById("quiz-card-" + questionNumber).style.display = "none";
+      questionNumber++;
+      if (questionNumber <= totalQuestions) {
+        document.getElementById("quiz-card-" + questionNumber).style.display = "block";
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      // Hitung dan tampilkan hasil kuis
+      var score = Math.round((correctAnswers / totalQuestions) * 100);
+      var resultText = "Skor Anda: " + score + "%";
+      document.getElementById("result-text").innerHTML = resultText;
+      document.getElementById("result-container").style.display = "block";
+    }
+
+    function restartQuiz() {
+      // Atur ulang semua variabel dan tampilkan pertanyaan pertama
+      correctAnswers = 0;
+      currentQuestion = 1;
+      document.getElementById("quiz-card-1").style.display = "block";
+      document.getElementById("result-container").style.display = "none";
+    }
+  </script>
+</body>
+</html>
